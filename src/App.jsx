@@ -5,7 +5,7 @@ import LogInPage from './Pages/LogInPage'
 import Navbar from './Components/navbar';
 import AuthStatus from './Components/AuthStatus';
 import Dashboard from './Components/DashBoard';
-import CarrButton from './Components/CartButton';
+import Navbase from './Components/Navbase';
 
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
        <Navbar/>      
           <AuthStatus />
           <Dashboard />
-          <CarrButton user={true} cart={['pc','teclado','mouse']} />
+          <Navbase user={true} cart={['pc','teclado','mouse']} />
           <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/singup" element={!userLogin ? <SingUpPage /> : <Navigate to="/" />}/>
