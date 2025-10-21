@@ -12,6 +12,12 @@ const Navbase = ({user, cart}) => {
         <Link className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out" to="/">
         Home
         </Link>
+        <Link className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out" to="/login">
+        Login
+        </Link>
+        <Link className="text-gray-300 hover:text-emerald-400 transition duration-300 ease-in-out" to="/">
+        Home
+        </Link>
      <CarrButton user={user} cart={cart} />
     </nav>
  </>
