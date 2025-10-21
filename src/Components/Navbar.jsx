@@ -1,19 +1,23 @@
 import { Link } from "react-router-dom";
+import Navbase from "./Navbase";
+import Dashboard from "./Dashboard";
+import AuthStatus from "./AuthStatus";
 
 const Navbar = () => {
 
-    return(
-     <nav>
-        <ul>
-           <li><Link to="/" > Home </Link></li>
-           <li><Link to="/singup">Sing Up</Link></li>
-           <li><Link to="/login">Login</Link></li>      
-       
-       
-       
-        </ul>
+   const user = true
+   const cart = ["Pc","Mouse","Teclado"]
+   const isAdmin = true
 
-    
+    return(
+     
+     <nav className="flex flex-wrap place-items-center gap-4 ">
+
+      <Navbase user={user} cart={cart} />
+      <Dashboard isAdmin={isAdmin} />
+      <AuthStatus user={user} />
+
+
       </nav>
 
 
