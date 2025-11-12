@@ -1,42 +1,42 @@
-import { KeyRound, Mail } from "lucide-react";
 import { useState } from "react";
-//import FormField from "../Components/FormField";
+import { Mail, KeyRound } from "lucide-react";
+import FormField from "../Components/FormField";
 import TitleForm from "../Components/TitleForm";
 
-const LogInPage = () => {
-   const [email,setEmail] = useState('');
-   const [password, setPassword] = useState('');
+const LogInPage = ({ setUserLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-   const handleSubmit = (e) => {
-     e.preventDefault ();
-     console.log('Email: ', email);
-     console.log('Pasword: ', password);
+  const handleLogin = (e) => { //no permite que serecargue la pagina
+    e.preventDefault();
 
-
-   };
-
-    return(
-      <div className="flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8">
-        <TitleForm title="Crear Cuenta" />
-         
-         <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-           <div className="bg-gray-800 py-8 px-4 shadow sm:rounded-lg sm:px-10">
-               <form onSubmit={handleSubmit} className="space-y-10">
-                   <FormField fieldName="email" FieldIcon={Mail} fieldValue={email} onChange={setEmail}/>
-                   <FormField fieldName="password" FieldIcon={KeyRound} fieldValue={password} onChange={setPassword}/>
-
-                   <button 
-                   className="w-full flex justify-center border rounded-md border-transparent bg-emerald-600 py-2 px-4 text-sm 
-                   font-medium text-white hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2"
-                   type="submit" 
-                   >Enviar </button>
-         
-               </form>
-            </div>
-         </div>
-      </div>   
-    );
-  
+    // Simulación de login exitoso
+    if (email === "test@example.com" && password === "1234") {
+      setUserLogin(true);
+      localStorage.setItem("userLogin", "true");
+    } else {
+      alert("Credenciales incorrectas");
+    }
   };
-  
-  export default LogInPage;
+
+  return (
+    <form onSubmit={handleLogin}>
+      <TitleForm title="Iniciar sesión" />
+      <FormField
+        fieldName="email"
+        FieldIcon={Mail}
+        fieldValue={email}
+        onChange={setEmail}
+      />
+      <FormField
+        fieldName="password"
+        FieldIcon={KeyRound}
+        fieldValue={password}
+        onChange={setPassword}
+      />
+      <button type="submit">Ingresar</button>
+    </form>
+  );
+};
+
+export default LogInPage;
